@@ -1,0 +1,238 @@
+/* --- ESTILOS GENERALES Y FUENTES --- */
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #fdeff4; /* Un rosa pastel muy suave */
+    color: #333;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Evita el desbordamiento horizontal */
+}
+
+/* --- TÍTULOS Y TEXTOS --- */
+h1, h2 {
+    font-family: 'Dancing Script', cursive;
+    text-align: center;
+    color: #d83a7a; /* Un rosa más intenso */
+    font-size: 3rem;
+}
+
+header {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('imagenes/fondo.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 80px 20px;
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+}
+
+.main-title {
+    font-size: 4.5rem;
+    margin: 0;
+    animation: fadeInDown 1s ease-out;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    font-family: 'Montserrat', sans-serif;
+    animation: fadeInUp 1s ease-out;
+}
+
+section {
+    padding: 50px 20px;
+    max-width: 1000px;
+    margin: 40px auto;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* --- CONTADOR --- */
+.countdown-section h2 { margin-bottom: 30px; }
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    text-align: center;
+}
+.time-box {
+    background: #f7b2c7;
+    padding: 20px;
+    border-radius: 10px;
+    min-width: 100px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+}
+.time-box span {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+}
+
+/* --- GALERÍA DE FOTOS --- */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.gallery-item:hover {
+    transform: scale(1.05) rotate(2deg);
+}
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+.gallery-item p {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    color: white;
+    font-weight: bold;
+    margin: 0;
+    padding: 20px 10px 10px;
+    text-align: center;
+    transform: translateY(100%);
+    transition: transform 0.4s ease;
+}
+.gallery-item:hover p {
+    transform: translateY(0);
+}
+
+/* --- SECCIÓN DE RAZONES --- */
+.reasons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    justify-items: center;
+}
+.reason-card {
+    cursor: pointer;
+    text-align: center;
+}
+.heart {
+    font-size: 4rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+.reason-card:hover .heart {
+    transform: scale(1.2);
+    animation: palpitar 0.5s infinite alternate;
+    color: #e6005c;
+}
+.reason-text {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.4s ease;
+    height: 0;
+    margin: 0;
+    font-weight: bold;
+    color: #d83a7a;
+}
+.reason-card.show .reason-text {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+    height: auto;
+}
+
+@keyframes palpitar { to { transform: scale(1.2); } }
+@keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+/* --- LÍNEA DE TIEMPO --- */
+.timeline { position: relative; max-width: 1200px; margin: 0 auto; }
+.timeline::after { content: ''; position: absolute; width: 6px; background-color: #f7b2c7; top: 0; bottom: 0; left: 50%; margin-left: -3px; }
+.timeline-container { padding: 0px; position: relative; background-color: inherit; width: 50%; }
+.timeline-container.left { left: 0; }
+.timeline-container.right { left: 50%; }
+.timeline-container::after { content: ' '; position: absolute; width: 25px; height: 25px; right: -17px; background-color: white; border: 4px solid #d83a7a; top: 15px; border-radius: 50%; z-index: 1; }
+.right::after { left: -16px; }
+.content { padding: 20px 30px; background-color: #fff7fa; position: relative; border-radius: 6px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); }
+
+/* --- SECCIÓN DE MÚSICA Y FOOTER --- */
+.music-section { text-align: center; }
+footer { text-align: center; padding: 20px; margin-top: 40px; background-color: #d83a7a; color: white; }
+
+/* --- ANIMACIÓN DE CORAZONES DE FONDO --- */
+.hearts-container { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; pointer-events: none; z-index: -1; }
+.heart-bg { position: absolute; font-size: 2rem; color: #ff7aab; animation: floatUp 10s infinite linear; }
+@keyframes floatUp { 0% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(-100vh); opacity: 0; } }
+
+/* --- ESTILOS PARA EL REPRODUCTOR PERSONALIZADO TIPO SPOTIFY --- */
+.spotify-player { max-width: 500px; margin: 30px auto 0; background-color: #181818; border-radius: 8px; padding: 16px; display: flex; align-items: center; gap: 16px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); }
+.album-art { width: 80px; height: 80px; border-radius: 6px; object-fit: cover; }
+.player-main { flex-grow: 1; display: flex; flex-direction: column; color: white; }
+.song-details h3 { font-family: 'Montserrat', sans-serif; font-size: 1rem; color: white; margin: 0 0 4px 0; text-align: left; }
+.song-details p { font-size: 0.8rem; color: #b3b3b3; margin: 0; }
+.player-controls { display: flex; justify-content: center; align-items: center; margin: 12px 0; }
+.control-button { background-color: white; color: black; border: none; border-radius: 50%; width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; cursor: pointer; transition: transform 0.2s; }
+.control-button:hover { transform: scale(1.1); }
+.control-button svg { fill: black; }
+.progress-bar-container { display: flex; align-items: center; gap: 8px; width: 100%; color: #b3b3b3; font-size: 0.7rem; }
+.progress-bar { flex-grow: 1; background-color: #535353; height: 4px; border-radius: 2px; cursor: pointer; }
+.progress { background-color: white; height: 100%; width: 0%; border-radius: 2px; }
+.progress-bar:hover .progress { background-color: #1db954; }
+
+
+/*
+================================================================
+--- MEDIA QUERIES PARA RESPONSIVIDAD (LA MAGIA PARA CELULARES) ---
+================================================================
+*/
+@media screen and (max-width: 768px) {
+    /* Hacemos los títulos principales un poco más pequeños */
+    .main-title { font-size: 2.8rem; }
+    h2 { font-size: 2.2rem; }
+    section { padding: 40px 15px; }
+
+    /* Apilamos los cuadros del contador verticalmente */
+    .countdown {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    /* Ajustamos el grid de la galería para que se vea mejor */
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    /* Hacemos que la línea de tiempo ocupe todo el ancho */
+    .timeline::after { left: 31px; }
+    .timeline-container { width: 100%; padding-left: 70px; padding-right: 25px; }
+    .timeline-container.right { left: 0%; }
+
+    /* Hacemos que el reproductor de música se apile verticalmente */
+    .spotify-player {
+        flex-direction: column;
+        max-width: 90%; /* Ocupa casi todo el ancho disponible */
+        padding: 20px;
+    }
+    .album-art {
+        width: 150px; /* Hacemos la carátula más grande */
+        height: 150px;
+    }
+    .player-main {
+        width: 100%; /* El contenedor de controles ocupa todo el ancho */
+    }
+    .song-details {
+        text-align: center; /* Centramos el texto de la canción */
+    }
+    .song-details h3, .song-details p {
+        text-align: center;
+    }
+}
